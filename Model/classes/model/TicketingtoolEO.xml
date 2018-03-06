@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="TicketingtoolEO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="TT_TICKETINGTOOL"
+  AliasName="TicketingtoolEO"
+  BindingStyle="OracleName"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="Ticketnumber"
+    Precision="10"
+    ColumnName="TICKETNUMBER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="TT_TICKETINGTOOL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Ticketid"
+    IsNotNull="true"
+    ColumnName="TICKETID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="TT_TICKETINGTOOL"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <TransientExpression><![CDATA[(new oracle.jbo.server.SequenceImpl("TT_TICKETID_SEQ", adf.object.getDBTransaction())).getSequenceNumber()]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="Projectname"
+    Precision="225"
+    ColumnName="PROJECTNAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="TT_TICKETINGTOOL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="225"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Subject"
+    Precision="225"
+    ColumnName="SUBJECT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="TT_TICKETINGTOOL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="225"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Status"
+    Precision="225"
+    ColumnName="STATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="TT_TICKETINGTOOL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="225"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Assignedto"
+    Precision="225"
+    ColumnName="ASSIGNEDTO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="TT_TICKETINGTOOL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="225"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Category"
+    Precision="225"
+    ColumnName="CATEGORY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="TT_TICKETINGTOOL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="225"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Priority"
+    Precision="225"
+    ColumnName="PRIORITY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="TT_TICKETINGTOOL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="225"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Summary"
+    Precision="1000"
+    ColumnName="SUMMARY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="TT_TICKETINGTOOL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Description"
+    Precision="1000"
+    ColumnName="DESCRIPTION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="TT_TICKETINGTOOL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Stepstoreproduce"
+    Precision="500"
+    ColumnName="STEPSTOREPRODUCE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="TT_TICKETINGTOOL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Additionalinformation"
+    Precision="500"
+    ColumnName="ADDITIONALINFORMATION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="TT_TICKETINGTOOL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreationDate"
+    ColumnName="CREATION_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="TT_TICKETINGTOOL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ProjectId"
+    ColumnName="PROJECT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="TT_TICKETINGTOOL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UserId"
+    Precision="50"
+    ColumnName="USER_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="TT_TICKETINGTOOL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ClosedDate"
+    ColumnName="CLOSED_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="TT_TICKETINGTOOL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdatedDate"
+    ColumnName="LAST_UPDATED_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="TT_TICKETINGTOOL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="TicketingtooleoPrimaryKey"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="TICKETINGTOOLEO_PRIMARY_KEY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.TicketingtoolEO.Ticketid"/>
+    </AttrArray>
+  </Key>
+</Entity>

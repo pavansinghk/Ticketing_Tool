@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <managed-bean id="__12">
+    <managed-bean-name id="__11">Admin_Bean</managed-bean-name>
+    <managed-bean-class id="__14">view.Admin_Bean</managed-bean-class>
+    <managed-bean-scope id="__13">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__15">
+    <managed-bean-name id="__16">AdminBean</managed-bean-name>
+    <managed-bean-class id="__18">view.AdminBean</managed-bean-class>
+    <managed-bean-scope id="__17">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__2">
+    <managed-bean-name id="__4">Ticketing_Tool_Bean</managed-bean-name>
+    <managed-bean-class id="__1">view.Ticketing_Tool</managed-bean-class>
+    <managed-bean-scope id="__3">pageFlow</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

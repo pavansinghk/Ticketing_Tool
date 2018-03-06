@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Ticketing-Tool">
+    <default-activity id="__16">Search</default-activity>
+    <managed-bean id="__14">
+      <managed-bean-name id="__12">CreateBean</managed-bean-name>
+      <managed-bean-class id="__15">view.CreateBean</managed-bean-class>
+      <managed-bean-scope id="__13">request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__19">
+      <managed-bean-name id="__17">SearchBean</managed-bean-name>
+      <managed-bean-class id="__18">view.SearchBean</managed-bean-class>
+      <managed-bean-scope id="__1">request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__31">
+      <managed-bean-name id="__29">AdministratorBean</managed-bean-name>
+      <managed-bean-class id="__30">view.AdministratorBean</managed-bean-class>
+      <managed-bean-scope id="__28">request</managed-bean-scope>
+    </managed-bean>
+    <view id="Create">
+      <page>/Create.jsff</page>
+    </view>
+    <view id="Search">
+      <page>/Search.jsff</page>
+    </view>
+    <view id="Admin">
+      <page>/Admin.jsff</page>
+    </view>
+    <method-call id="emptyAttachments">
+      <method>#{bindings.emptyAttachments.execute}</method>
+      <outcome id="__32">
+        <fixed-outcome>emptyAttachments</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__3">Create</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome id="__6">To Search</from-outcome>
+        <to-activity-id id="__4">Search</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id id="__8">Search</from-activity-id>
+      <control-flow-case id="__20">
+        <from-outcome id="__26">*Admin</from-outcome>
+        <to-activity-id id="__21">Admin</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__9">
+        <from-outcome id="__11">To Create</from-outcome>
+        <to-activity-id id="__10">Create</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__22">
+      <from-activity-id id="__23">Admin</from-activity-id>
+      <control-flow-case id="__25">
+        <from-outcome id="__27">Redirect To Search</from-outcome>
+        <to-activity-id id="__24">Search</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__33">
+      <from-activity-id id="__34">emptyAttachments</from-activity-id>
+      <control-flow-case id="__36">
+        <from-outcome id="__37">emptyAttachments</from-outcome>
+        <to-activity-id id="__35">Search</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ProjectsEO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="TT_PROJECTS"
+  AliasName="ProjectsEO"
+  BindingStyle="OracleName"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="ProjectId"
+    ColumnName="PROJECT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="TT_PROJECTS"
+    IsNotNull="true"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+    <TransientExpression><![CDATA[(new oracle.jbo.server.SequenceImpl("TT_Project_id_SEQ", adf.object.getDBTransaction())).getSequenceNumber()]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="ProjectName"
+    Precision="50"
+    ColumnName="PROJECT_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="TT_PROJECTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ProjectCreateDate"
+    ColumnName="&quot;Synchronize:Fix_SQL&quot;"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    IsPersistent="false">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="CreationId"
+    ColumnName="CREATION_ID"
+    SQLType="VARCHAR"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="VARCHAR2"
+    TableName="TT_PROJECTS"
+    Precision="30">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="StartDate"
+    ColumnName="START_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="TT_PROJECTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="EndDate"
+    ColumnName="END_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="TT_PROJECTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Status"
+    Precision="5"
+    ColumnName="STATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="TT_PROJECTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="ProjectseoPrimaryKey"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PROJECTSEO_PRIMARY_KEY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.ProjectsEO.ProjectId"/>
+    </AttrArray>
+  </Key>
+</Entity>

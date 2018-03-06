@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ProjectUserMappingEO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="TT_PROJECT_USER_MAPPING"
+  AliasName="ProjectUserMappingEO"
+  BindingStyle="OracleName"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="ProjectId"
+    ColumnName="PROJECT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="TT_PROJECT_USER_MAPPING">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UserId"
+    Precision="255"
+    ColumnName="USER_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="TT_PROJECT_USER_MAPPING">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PuId"
+    IsNotNull="true"
+    ColumnName="PU_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="TT_PROJECT_USER_MAPPING"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="ProjectusermappingeoPrimaryKey"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PROJECTUSERMAPPINGEO_PRIMARY_K"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.ProjectUserMappingEO.PuId"/>
+    </AttrArray>
+  </Key>
+</Entity>

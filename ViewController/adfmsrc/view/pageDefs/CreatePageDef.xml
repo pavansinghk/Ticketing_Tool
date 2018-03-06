@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.65.57" id="CreatePageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="TicketingToolTransVO1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="TicketingToolTransVO1Iterator"/>
+    <iterator Binds="AttachmentTransVO1_1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="AttachmentTransVO1_1Iterator"/>
+    <iterator Binds="ActtachmentsTransVO1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="ActtachmentsTransVO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="TicketingToolTransVO1Iterator"
+                     id="Ticketnumber">
+      <AttrNames>
+        <Item Value="Ticketnumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TicketingToolTransVO1Iterator" id="Ticketid">
+      <AttrNames>
+        <Item Value="Ticketid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TicketingToolTransVO1Iterator" id="Subject">
+      <AttrNames>
+        <Item Value="Subject"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="TicketingToolTransVO1Iterator" StaticList="false"
+          Uses="LOV_Category" id="Category" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="TicketingToolTransVO1Iterator" StaticList="false"
+          Uses="LOV_Priority" id="Priority" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="TicketingToolTransVO1Iterator" id="Summary">
+      <AttrNames>
+        <Item Value="Summary"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TicketingToolTransVO1Iterator"
+                     id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="TicketingToolTransVO1Iterator"
+                     id="Stepstoreproduce">
+      <AttrNames>
+        <Item Value="Stepstoreproduce"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="TicketingToolTransVO1Iterator" StaticList="false"
+          Uses="LOV_Status" id="Status" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <tree IterBinding="ActtachmentsTransVO1Iterator" id="ActtachmentsTransVO1">
+      <nodeDefinition DefName="model.ActtachmentsTransVO"
+                      Name="ActtachmentsTransVO10">
+        <AttrNames>
+          <Item Value="Attachmentname"/>
+          <Item Value="Attachmetdata"/>
+          <Item Value="Attachmentcontenttype"/>
+          <Item Value="Selection"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="TicketingToolTransVO1Iterator" StaticList="false"
+          Uses="LOV_Projectname" id="Projectname" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <methodAction id="comments" InstanceName="AppModuleDataControl.dataProvider"
+                  DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="comments"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="commentName" NDType="java.lang.String"/>
+      <NamedData NDName="ticId" NDType="java.lang.String"/>
+    </methodAction>
+    <listOfValues StaticList="false" IterBinding="TicketingToolTransVO1Iterator"
+                  Uses="LOV_Assignedto" id="Assignedto"/>
+    <attributeValues IterBinding="TicketingToolTransVO1Iterator"
+                     id="ClosedDate">
+      <AttrNames>
+        <Item Value="ClosedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="CreateTicketingTool"
+                  InstanceName="AppModuleDataControl.dataProvider"
+                  DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="CreateTicketingTool"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.AppModuleDataControl.methodResults.CreateTicketingTool_AppModuleDataControl_dataProvider_CreateTicketingTool_result">
+      <NamedData NDName="closeddate" NDType="java.util.Date"/>
+      <NamedData NDName="assignedTo" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

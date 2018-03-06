@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ActtachmentsTransVO"
+  Version="11.1.1.65.57"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.ActtachmentsTransVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery>
+    <![CDATA[select '' as AttachmentName, '' as AttachmetData, '' as AttachmentContentType, '' as Selection from dual]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="Attachmentname"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="225"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ATTACHMENTNAME"
+    Expression="ATTACHMENTNAME"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="Attachmetdata"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.BlobDomain"
+    ColumnType="BLOB"
+    AliasName="ATTACHMETDATA"
+    Expression="ATTACHMETDATA"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="Attachmentcontenttype"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="225"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ATTACHMENTCONTENTTYPE"
+    Expression="ATTACHMENTCONTENTTYPE"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="Selection"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="20"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="SELECTION"
+    Expression="SELECTION"
+    SQLType="VARCHAR"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

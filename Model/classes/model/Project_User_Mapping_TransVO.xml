@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Project_User_Mapping_TransVO"
+  Version="11.1.1.66.73"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.Project_User_Mapping_TransVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="ProjectsVO1"
+    ViewObjectName="model.ProjectsVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="UsersVO1"
+    ViewObjectName="model.UsersVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_UserName"
+    ListVOName="UsersVO1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_UserName_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="UserName"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="UserId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="UserName"/>
+      <Item Value="UserId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="UserName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ProjectName"
+    ListVOName="ProjectsVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ProjectName"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="ProjectId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ProjectName"/>
+      <Item Value="ProjectId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ProjectName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[select '' as Project_Name,'' as User_Name,'' as User_Id,''as Project_Id  from dual]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="ProjectName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="32"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="PROJECT_NAME"
+    Expression="PROJECT_NAME"
+    SQLType="VARCHAR"
+    LOVName="LOV_ProjectName">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UserName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="32"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="USER_NAME"
+    Expression="USER_NAME"
+    SQLType="VARCHAR"
+    LOVName="LOV_UserName">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UserId"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="32"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="USER_ID"
+    Expression="USER_ID"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="ProjectId"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="32"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="PROJECT_ID"
+    Expression="PROJECT_ID"
+    SQLType="VARCHAR"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

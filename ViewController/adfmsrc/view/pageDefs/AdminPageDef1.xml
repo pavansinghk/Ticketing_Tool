@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.65.57" id="AdminPageDef1"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ProjectsVO1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="ProjectsVO1Iterator"/>
+    <iterator Binds="Project_User_Mapping_TransVO1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="Project_User_Mapping_TransVO1Iterator"/>
+    <iterator Binds="ProjectUserVO1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="ProjectUserVO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="ProjectsVO1Iterator" id="ProjectName">
+      <AttrNames>
+        <Item Value="ProjectName"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="addUser" InstanceName="AppModuleDataControl.dataProvider"
+                  DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="addUser"
+                  IsViewObjectMethod="false"/>
+    <list IterBinding="Project_User_Mapping_TransVO1Iterator" StaticList="false"
+          Uses="LOV_ProjectName" id="ProjectName2" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <listOfValues StaticList="false"
+                  IterBinding="Project_User_Mapping_TransVO1Iterator"
+                  Uses="LOV_UserName" id="UserName1"/>
+    <tree IterBinding="ProjectUserVO1Iterator" id="ProjectUserVO1">
+      <nodeDefinition DefName="model.ProjectUserVO" Name="ProjectUserVO10">
+        <AttrNames>
+          <Item Value="UserName"/>
+          <Item Value="UserId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="checkProjectName"
+                  InstanceName="AppModuleDataControl.dataProvider"
+                  DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="checkProjectName"
+                  IsViewObjectMethod="false"/>
+    <attributeValues IterBinding="Project_User_Mapping_TransVO1Iterator"
+                     id="ProjectId">
+      <AttrNames>
+        <Item Value="ProjectId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProjectsVO1Iterator" id="StartDate">
+      <AttrNames>
+        <Item Value="StartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProjectsVO1Iterator" id="EndDate">
+      <AttrNames>
+        <Item Value="EndDate"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="onAdminProjectName"
+                  InstanceName="AppModuleDataControl.dataProvider"
+                  DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="onAdminProjectName"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="projectName" NDType="java.lang.String"/>
+      <NamedData NDName="startdate" NDType="java.util.Date"/>
+      <NamedData NDName="enddate" NDType="java.util.Date"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl2">
+    <af:panelGroupLayout id="pgl8" layout="horizontal"
+                         inlineStyle="width:1340px; height:31px; background-color:#000042; border-right-color:#000042; border-top-color:#000042; border-right-width:thick; border-top-width:thick; border-right-style:solid; border-top-style:solid;">
+      <af:outputText value="Administration" id="ot9"
+                     inlineStyle="color:White; font-family:'Times New Roman', 'Arial Black', times, Serif; font-size:x-large; font-weight:bolder;"/>
+    <af:spacer width="170" height="10" id="s11"/>
+      <af:commandImageLink id="cil1"
+                           icon="/Home 1.jpg" action="Redirect To Search"/>
+    </af:panelGroupLayout>
+    <af:popup id="p2" binding="#{AdministratorBean.addUserSuccess}">
+      <af:dialog id="d2" type="ok">
+        <af:outputText value="User Added" id="ot4"/>
+      </af:dialog>
+    </af:popup>
+    <af:spacer width="10" height="50" id="s4"/>
+    <af:panelGroupLayout id="pgl10" layout="vertical">
+      <af:outputText value="Create Project" id="ot1"
+                     inlineStyle="font-family:'Times New Roman', 'Arial Black', times, Serif; font-size:large; font-weight:bolder; vertical-align:sub;"/>
+      <af:spacer width="10" height="10" id="s1"/>
+      <af:inputText label="#{bindings.ProjectName.hints.label}"
+                    required="#{bindings.ProjectName.hints.mandatory}"
+                    columns="#{bindings.ProjectName.hints.displayWidth}"
+                    maximumLength="#{bindings.ProjectName.hints.precision}"
+                    shortDesc="#{bindings.ProjectName.hints.tooltip}" id="it1"
+                    binding="#{AdministratorBean.projectName}"
+                    autoSubmit="true" showRequired="true">
+        <f:validator binding="#{bindings.ProjectName.validator}"/>
+      </af:inputText>
+      <af:spacer width="10" height="10" id="s3"/>
+      <af:panelGroupLayout id="pgl1" layout="horizontal">
+        <af:inputDate
+                      label="#{bindings.StartDate.hints.label}"
+                      required="#{bindings.StartDate.hints.mandatory}"
+                      shortDesc="#{bindings.StartDate.hints.tooltip}" id="id1"
+                      binding="#{AdministratorBean.createProjectStartDate}"
+                      minValue="#{requestScope.AdministratorBean.currentDate}"
+                      autoSubmit="true" showRequired="true">
+          <f:validator binding="#{bindings.StartDate.validator}"/>
+          <af:convertDateTime pattern="#{bindings.StartDate.format}"/>
+        </af:inputDate>
+        <af:inputDate
+                      label="#{bindings.EndDate.hints.label}"
+                      required="#{bindings.EndDate.hints.mandatory}"
+                      shortDesc="#{bindings.EndDate.hints.tooltip}" id="id2"
+                      binding="#{AdministratorBean.createProjectEndDate}"
+                      autoSubmit="true"
+                      minValue="#{requestScope.AdministratorBean.minDate}"
+                      showRequired="true">
+          <f:validator binding="#{bindings.EndDate.validator}"/>
+          <af:convertDateTime pattern="#{bindings.EndDate.format}"/>
+        </af:inputDate>
+      </af:panelGroupLayout>
+      <af:spacer width="10" height="10" id="s2"/>
+      <af:panelGroupLayout id="pgl5" layout="horizontal">
+        <af:commandButton text="Submit" id="cb2"
+                          actionListener="#{AdministratorBean.onSubmit}"
+                          partialSubmit="true"/>
+        <af:commandButton text="Back" id="cb1" action="Redirect To Search"/>
+      </af:panelGroupLayout>
+    </af:panelGroupLayout>
+    <af:spacer width="10" height="30" id="s7"/>
+    <af:panelGroupLayout id="pgl4" layout="vertical">
+      <af:outputText value="Add User" id="ot3"
+                     inlineStyle="font-family:'Times New Roman', 'Arial Black', times, Serif; font-size:large; font-weight:bolder;"/>
+      <af:spacer width="10" height="10" id="s5"/>
+      <af:panelGroupLayout id="pgl3" layout="horizontal">
+        <af:selectOneChoice label="#{bindings.ProjectName2.label}"
+                            required="#{bindings.ProjectName2.hints.mandatory}"
+                            shortDesc="#{bindings.ProjectName2.hints.tooltip}"
+                            id="soc2"
+                            binding="#{AdministratorBean.onProjectNameSuccess}"
+                            autoSubmit="true"
+                            valueChangeListener="#{AdministratorBean.projectSelected}"
+                            valuePassThru="true"
+                            value="#{bindings.ProjectName2.inputValue}"
+                            partialTriggers="it1 cb2">
+          <f:selectItems value="#{bindings.ProjectName2.items}" id="si2"/>
+        </af:selectOneChoice>
+        <af:spacer width="10" height="10" id="s8"/>
+        <af:panelGroupLayout id="pgl6">
+          <af:outputText id="ot7" binding="#{AdministratorBean.addUserActive}"
+                         visible="false"
+                         inlineStyle="color:Green; font-size:large; font-family:Verdana, Arial, Helvetica, sans-serif;"
+                         partialTriggers="soc2"/>
+        </af:panelGroupLayout>
+        <af:spacer width="10" height="10" id="s9"/>
+        <af:commandButton text="Add User" id="cb4"
+                          actionListener="#{AdministratorBean.addUser}"/>
+        <af:inputListOfValues id="userName1Id"
+                              popupTitle="Search and Select: #{bindings.UserName1.hints.label}"
+                              value="#{bindings.UserName1.inputValue}"
+                              label="#{bindings.UserName1.hints.label}"
+                              model="#{bindings.UserName1.listOfValuesModel}"
+                              required="#{bindings.UserName1.hints.mandatory}"
+                              columns="#{bindings.UserName1.hints.displayWidth}"
+                              shortDesc="#{bindings.UserName1.hints.tooltip}"
+                              visible="false"
+                              binding="#{AdministratorBean.userName}">
+          <f:validator binding="#{bindings.UserName1.validator}"/>
+        </af:inputListOfValues>
+        <af:commandButton text="Add " id="cb3"
+                          actionListener="#{AdministratorBean.onAddUser}"
+                          partialSubmit="true" visible="false"
+                          binding="#{AdministratorBean.addUserbtn}"/>
+      </af:panelGroupLayout>
+      <af:spacer width="10" height="10" id="s6"/>
+      <af:table value="#{bindings.ProjectUserVO1.collectionModel}" var="row"
+                rows="#{bindings.ProjectUserVO1.rangeSize}"
+                emptyText="#{bindings.ProjectUserVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                fetchSize="#{bindings.ProjectUserVO1.rangeSize}"
+                rowBandingInterval="0" id="t1" partialTriggers="::soc2"
+                inlineStyle="height:91px;" width="216">
+        <af:column sortProperty="#{bindings.ProjectUserVO1.hints.UserName.name}"
+                   sortable="false"
+                   headerText="#{bindings.ProjectUserVO1.hints.UserName.label}"
+                   id="c1">
+          <af:outputText value="#{row.UserName}" id="ot5"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.ProjectUserVO1.hints.UserId.name}"
+                   sortable="false"
+                   headerText="#{bindings.ProjectUserVO1.hints.UserId.label}"
+                   id="c2">
+          <af:outputText value="#{row.UserId}" id="ot6"/>
+        </af:column>
+      </af:table>
+    </af:panelGroupLayout>
+    <af:popup id="p1" contentDelivery="immediate"
+              binding="#{AdministratorBean.projectSuccess}">
+      <af:dialog id="d1" type="ok">
+        <af:outputText value="Successfully Submitted" id="ot2"/>
+      </af:dialog>
+    </af:popup>
+  </af:panelGroupLayout>
+</jsp:root>

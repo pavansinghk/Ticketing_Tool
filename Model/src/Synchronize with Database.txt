@@ -1,0 +1,8 @@
+The following Synchronization Actions were performed successfully:
+
+Entity :UsersEO
+  Attribute :UserId
+    Change Mandatory to:true
+    Change Primary Key to:true
+  Remove RowID since there is now a primary key attribute
+  Create Key for Constraint: SYS_C0012033

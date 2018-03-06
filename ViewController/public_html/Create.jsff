@@ -1,0 +1,200 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+           <af:panelGroupLayout id="pgl8" layout="horizontal"
+                         inlineStyle="width:1340px; height:31px; background-color:#000042; border-right-color:#000042; border-top-color:#000042; border-right-width:thick; border-top-width:thick; border-right-style:solid; border-top-style:solid;">
+      <af:outputText value="Create Ticket" id="ot4"
+                     inlineStyle="color:White; font-family:'Times New Roman', 'Arial Black', times, Serif; font-size:x-large; font-weight:bolder;"/>
+    <af:spacer width="170" height="10" id="s8"/>
+    <af:commandImageLink id="cil2" icon="/Home 1.jpg" action="To Search"/>
+  </af:panelGroupLayout>
+  <af:panelFormLayout id="pfl1" inlineStyle="width:1069px;">
+  
+    <af:inputText value="#{bindings.Ticketnumber.inputValue}"
+                  label="#{bindings.Ticketnumber.hints.label}"
+                  required="#{bindings.Ticketnumber.hints.mandatory}"
+                  columns="#{bindings.Ticketnumber.hints.displayWidth}"
+                  maximumLength="#{bindings.Ticketnumber.hints.precision}"
+                  shortDesc="#{bindings.Ticketnumber.hints.tooltip}" id="it6"
+                  rendered="false">
+      <f:validator binding="#{bindings.Ticketnumber.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.Ticketid.inputValue}"
+                  label="#{bindings.Ticketid.hints.label}"
+                  required="#{bindings.Ticketid.hints.mandatory}"
+                  columns="#{bindings.Ticketid.hints.displayWidth}"
+                  maximumLength="#{bindings.Ticketid.hints.precision}"
+                  shortDesc="#{bindings.Ticketid.hints.tooltip}" id="it1"
+                  rendered="false" binding="#{CreateBean.onTicketId}">
+      <f:validator binding="#{bindings.Ticketid.validator}"/>
+      <af:convertNumber groupingUsed="false"
+                        pattern="#{bindings.Ticketid.format}"/>
+    </af:inputText>
+    <af:popup id="p1" contentDelivery="lazy"
+              binding="#{CreateBean.ticketsucess}">
+      <af:dialog id="d1">
+        <af:outputText value="Ticket Number   #{bindings.Ticketnumber.inputValue}   Successfully Created."
+                       id="ot1"/>
+      </af:dialog>
+    </af:popup>
+    <af:panelGroupLayout id="pgl3" layout="horizontal" valign="top">
+      <af:panelFormLayout id="pfl3" labelAlignment="start">
+        <f:facet name="footer"/>
+        <af:selectOneChoice value="#{bindings.Projectname.inputValue}"
+                            label="#{bindings.Projectname.label}"
+                            required="#{bindings.Projectname.hints.mandatory}"
+                            shortDesc="#{bindings.Projectname.hints.tooltip}"
+                            id="soc4" binding="#{CreateBean.projectName}"
+                            showRequired="true">
+          <f:selectItems value="#{bindings.Projectname.items}" id="si4"/>
+        </af:selectOneChoice>
+        <af:inputText value="#{bindings.Subject.inputValue}"
+                      label="#{bindings.Subject.hints.label}"
+                      required="#{bindings.Subject.hints.mandatory}"
+                      columns="30"
+                      maximumLength="#{bindings.Subject.hints.precision}"
+                      shortDesc="#{bindings.Subject.hints.tooltip}" id="it2"
+                      binding="#{CreateBean.subject}" showRequired="true">
+          <f:validator binding="#{bindings.Subject.validator}"/>
+        </af:inputText>
+        <af:selectOneChoice value="#{bindings.Status.inputValue}"
+                            label="#{bindings.Status.label}"
+                            required="#{bindings.Status.hints.mandatory}"
+                            shortDesc="#{bindings.Status.hints.tooltip}"
+                            id="soc2" binding="#{CreateBean.status}"
+                            showRequired="true">
+          <f:selectItems value="#{bindings.Status.items}" id="si1"/>
+        </af:selectOneChoice>
+        <af:inputDate value="#{bindings.ClosedDate.inputValue}"
+                      label="#{bindings.ClosedDate.hints.label}"
+                      required="#{bindings.ClosedDate.hints.mandatory}"
+                      shortDesc="#{bindings.ClosedDate.hints.tooltip}" id="id1"
+                      rendered="false">
+          <f:validator binding="#{bindings.ClosedDate.validator}"/>
+          <af:convertDateTime pattern="#{bindings.ClosedDate.format}"/>
+        </af:inputDate>
+        <af:selectOneChoice value="#{bindings.Priority.inputValue}"
+                            label="#{bindings.Priority.label}"
+                            required="#{bindings.Priority.hints.mandatory}"
+                            shortDesc="#{bindings.Priority.hints.tooltip}"
+                            id="soc3" binding="#{CreateBean.priority}"
+                            showRequired="true">
+          <f:selectItems value="#{bindings.Priority.items}" id="si3"/>
+        </af:selectOneChoice>
+        <af:selectOneChoice value="#{bindings.Category.inputValue}"
+                            label="#{bindings.Category.label}"
+                            required="#{bindings.Category.hints.mandatory}"
+                            shortDesc="#{bindings.Category.hints.tooltip}"
+                            id="soc1" binding="#{CreateBean.category}"
+                            showRequired="true">
+          <f:selectItems value="#{bindings.Category.items}" id="si2"/>
+        </af:selectOneChoice>
+        <af:inputFile label="Attach File" id="if1"
+                      valueChangeListener="#{CreateBean.onUpload}"
+                      autoSubmit="true" columns="30"/>
+        <af:table value="#{bindings.ActtachmentsTransVO1.collectionModel}"
+                  var="row" rows="#{bindings.ActtachmentsTransVO1.rangeSize}"
+                  emptyText="#{bindings.ActtachmentsTransVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.ActtachmentsTransVO1.rangeSize}"
+                  rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.ActtachmentsTransVO1.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.ActtachmentsTransVO1.collectionModel.makeCurrent}"
+                  id="t1" partialTriggers="::if1" inlineStyle="height:101px;"
+                  width="223">
+          <af:column sortProperty="#{bindings.ActtachmentsTransVO1.hints.Attachmentname.name}"
+                     sortable="false"
+                     headerText="#{bindings.ActtachmentsTransVO1.hints.Attachmentname.label}"
+                     id="c3">
+            <af:outputText value="#{row.Attachmentname}" id="ot2"/>
+          </af:column>
+          <af:column sortProperty="#{bindings.ActtachmentsTransVO1.hints.Attachmetdata.name}"
+                     sortable="false"
+                     headerText="#{bindings.ActtachmentsTransVO1.hints.Attachmetdata.label}"
+                     id="c1" rendered="false">
+            <af:inputText value="#{row.bindings.Attachmetdata.inputValue}"
+                          label="#{bindings.ActtachmentsTransVO1.hints.Attachmetdata.label}"
+                          required="#{bindings.ActtachmentsTransVO1.hints.Attachmetdata.mandatory}"
+                          columns="#{bindings.ActtachmentsTransVO1.hints.Attachmetdata.displayWidth}"
+                          maximumLength="#{bindings.ActtachmentsTransVO1.hints.Attachmetdata.precision}"
+                          shortDesc="#{bindings.ActtachmentsTransVO1.hints.Attachmetdata.tooltip}"
+                          id="it13">
+              <f:validator binding="#{row.bindings.Attachmetdata.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.ActtachmentsTransVO1.hints.Attachmentcontenttype.name}"
+                     sortable="false"
+                     headerText="#{bindings.ActtachmentsTransVO1.hints.Attachmentcontenttype.label}"
+                     id="c4" rendered="false">
+            <af:inputText value="#{row.bindings.Attachmentcontenttype.inputValue}"
+                          label="#{bindings.ActtachmentsTransVO1.hints.Attachmentcontenttype.label}"
+                          required="#{bindings.ActtachmentsTransVO1.hints.Attachmentcontenttype.mandatory}"
+                          columns="#{bindings.ActtachmentsTransVO1.hints.Attachmentcontenttype.displayWidth}"
+                          maximumLength="#{bindings.ActtachmentsTransVO1.hints.Attachmentcontenttype.precision}"
+                          shortDesc="#{bindings.ActtachmentsTransVO1.hints.Attachmentcontenttype.tooltip}"
+                          id="it4">
+              <f:validator binding="#{row.bindings.Attachmentcontenttype.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.ActtachmentsTransVO1.hints.Selection.name}"
+                     sortable="false" headerText="Delete" id="c2">
+            <af:commandImageLink id="cil1" icon="/cross.png"
+                                 actionListener="#{CreateBean.onDeleteAttach}"/>
+          </af:column>
+        </af:table>
+      </af:panelFormLayout>
+      <af:spacer width="50" height="20" id="s12"/>
+      <af:panelFormLayout id="pfl2" rows="4" maxColumns="1"
+                          labelAlignment="start">
+        <f:facet name="footer"/>
+        <af:inputListOfValues id="assignedtoId"
+                              popupTitle="Search and Select: #{bindings.Assignedto.hints.label}"
+                              label="#{bindings.Assignedto.hints.label}"
+                              model="#{bindings.Assignedto.listOfValuesModel}"
+                              required="#{bindings.Assignedto.hints.mandatory}"
+                              columns="#{bindings.Assignedto.hints.displayWidth}"
+                              shortDesc="#{bindings.Assignedto.hints.tooltip}"
+                              binding="#{CreateBean.assignTo}">
+          <f:validator binding="#{bindings.Assignedto.validator}"/>
+        </af:inputListOfValues>
+        <af:inputText value="#{bindings.Summary.inputValue}"
+                      label="#{bindings.Summary.hints.label}"
+                      required="#{bindings.Summary.hints.mandatory}"
+                      columns="50"
+                      maximumLength="#{bindings.Summary.hints.precision}"
+                      shortDesc="#{bindings.Summary.hints.tooltip}" id="it5"
+                      rows="4" binding="#{CreateBean.summary}"
+                      showRequired="true">
+          <f:validator binding="#{bindings.Summary.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Description.inputValue}"
+                      label="#{bindings.Description.hints.label}"
+                      required="#{bindings.Description.hints.mandatory}"
+                      columns="49"
+                      maximumLength="#{bindings.Description.hints.precision}"
+                      shortDesc="#{bindings.Description.hints.tooltip}" id="it3"
+                      rows="4">
+          <f:validator binding="#{bindings.Description.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Stepstoreproduce.inputValue}"
+                      label="#{bindings.Stepstoreproduce.hints.label}"
+                      required="#{bindings.Stepstoreproduce.hints.mandatory}"
+                      columns="45"
+                      maximumLength="#{bindings.Stepstoreproduce.hints.precision}"
+                      shortDesc="#{bindings.Stepstoreproduce.hints.tooltip}"
+                      id="it8" rows="4">
+          <f:validator binding="#{bindings.Stepstoreproduce.validator}"/>
+        </af:inputText>
+      </af:panelFormLayout>
+      <af:panelGroupLayout id="pgl2" layout="vertical">
+        <af:spacer width="10" height="10" id="s9"/>
+        <af:spacer width="10" height="10" id="s7"/>
+        <af:spacer width="10" height="10" id="s4"/>
+        <af:spacer width="10" height="10" id="s5"/>
+      </af:panelGroupLayout>
+    </af:panelGroupLayout>
+    <af:spacer width="10" height="30" id="s13"/>
+    <af:commandButton text="Submit" id="cb1"
+                      actionListener="#{CreateBean.onSubmit}"/>
+  </af:panelFormLayout>
+</jsp:root>

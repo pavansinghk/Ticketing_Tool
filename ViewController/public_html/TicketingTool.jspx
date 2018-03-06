@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" inlineStyle="outline-color:invert;">
+      <af:form id="f1" usesUpload="true">
+           <af:panelHeader text="" id="ph1"
+                        inlineStyle="background-color:rgb(240,240,240); width:1340px; border-left-color:#00247d; border-left-style:solid; border-left-width:thin; border-right-color:#00247d; border-right-style:solid; border-right-width:thin; border-top-color:#00247d; border-top-style:solid; border-top-width:thin; border-bottom-color:#00247d; border-bottom-style:solid; border-bottom-width:thin;">
+          <af:panelGroupLayout id="pgl1" layout="horizontal" valign="top" halign="start"
+                               inlineStyle="width:893px; height:59px;">
+            <af:image source="/TransSys logo.png" shortDesc="TransSys" id="i1" inlineStyle="width:192px;"/>
+            <af:panelGroupLayout id="pgl2" layout="vertical" valign="bottom" halign="center" inlineStyle="height:40px;">
+              <af:spacer width="20" height="15" id="s2"/>
+              <af:outputText id="ot1"
+                             inlineStyle="color:rgb(0,33,115); font-family:'Times New Roman'; font-size:xx-large; font-weight:bolder;"
+                             value="TransSys E-Desk"/>
+            </af:panelGroupLayout>
+          </af:panelGroupLayout>
+          <af:panelGroupLayout id="pgl4" layout="horizontal" inlineStyle="height:18px;">
+            <af:spacer width="1270" height="10" id="s1"/>
+            <af:panelGroupLayout id="pgl3">   
+              <af:commandLink text="Signout" id="l1"
+                       inlineStyle="color:rgb(0,33,115); font-family:'Times New Roman'; font-size:large; font-weight:bolder;"
+                              action="#{pageFlowScope.Ticketing_Tool_Bean.onSignOut}">
+              </af:commandLink>
+            </af:panelGroupLayout>
+          </af:panelGroupLayout>
+          <f:facet name="toolbar">
+            <af:outputText value="Welcome #{securityContext.userName}" id="ot2"
+                           inlineStyle="font-size:large; font-family:'Times New Roman'; color:rgb(0,33,115); font-weight:bolder;"/>
+          </f:facet>
+        </af:panelHeader>
+        <af:region value="#{bindings.TicketingTool1.regionModel}" id="r1"
+                   inlineStyle="width:1340px; border-left-color:#00247d;
+                   border-left-style:solid; border-left-width:thin;
+                   border-right-color:#00247d; border-right-style:solid; 
+                   border-right-width:thin; border-bottom-color:#00247d;
+                   border-bottom-style:solid; border-bottom-width:thin; 
+                   background-image:none;"/>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>
