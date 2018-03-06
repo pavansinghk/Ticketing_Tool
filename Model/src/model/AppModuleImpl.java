@@ -28,7 +28,7 @@ public class AppModuleImpl extends ApplicationModuleImpl implements AppModule {
     public AppModuleImpl() {       
     }
     
-    /*to do insertion in the table
+    /*to do insertion
      * 
      * 
      * 
